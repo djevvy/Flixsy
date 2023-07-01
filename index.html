@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title id="title">Webcomic</title>
+        
+        <style>
+            body {background-color: tan;}
+            h1   {color: black;}
+            p    {color: black;}
+        </style>
+        
+    </head>
+
+    <body>
+        
+
+        <center>
+            
+            
+            <img id="panelImg" src="" width="960" height="540" onerror="previousPanel()">
+                
+            <br><br>
+            
+            <button onclick="firstPanel()">First Panel</button>
+            <button onclick="previousPanel()">Previous Panel</button>
+            <button onclick="nextPanel()">Next Panel</button>
+            <button onclick="latestPanel()">Latest Panel</button>
+            
+            
+            <p id="statusP"> statusP</p>
+            
+            
+        </center>
+            
+        <script>
+            var panel = 1
+            updatePanel()
+            
+            document.getElementById("myImg").src = "panels/"+ panel +".gif";
+            
+            
+            function myfunc()
+            {
+                alert('The image could not be loaded.');
+            }
+            
+            function firstPanel()
+            {
+                panel = 1;
+                updatePanel();
+            }
+            
+            function previousPanel()
+            {
+                if(panel > 1)
+                {
+                    panel -= 1;
+                    updatePanel();
+                }
+                
+            }
+            
+            function nextPanel()
+            {
+                panel += 1;
+                
+                updatePanel();
+            }
+            
+            function latestPanel()
+            {
+                panel += 100;
+                updatePanel();
+            }
+
+            
+            function updatePanel()
+            {
+                
+                   
+                   document.getElementById("panelImg").src = "panels/"+ panel +".gif";
+                   
+                   document.title = "Webcomic " + panel;
+                   
+                   
+                   if(doesFileExist("panels/"+ panel +".gif"))
+                   {
+                       document.getElementById("statusP").innerHTML = "Panel " + panel + " exists!";
+                   }
+                   
+                   
+            }
+        </script>
+
+
+        <p>Webcomic</p>
+
+
+        
+
+
+
+
+    </body>
+    
+    
+    <audio loop autoplay>
+        <source src="Audio/maintheme.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+</html>
